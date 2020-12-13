@@ -22,11 +22,50 @@ provider:
   #
   #environment:
   #  SAMPLE_ENV_VAR: ${env:SAMPLE_ENV_VAR}
+environment:
+  tableName: candidates
+
+iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:Scan
+      - dynamodb:Query
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+      - dynamodb:DescribeTable
+    Resource: "arn:aws:dynamodb:us-east-1:*:*"
+
 useDotenv: true
 functions:
-  hello:
-    handler: handler.hello
+  create:
+    handler: create.main
     events:
       - http:
-          path: hello
+          path: candidates
+          method: post
+  get:
+    handler: get.main
+    events:
+      - http:
+          path: candidates/{id}
           method: get
+  list:
+    handler: list.main
+    events:
+      - http:
+          path: candidates
+          method: get
+  update:
+    handler: update.main
+    events:
+      - http:
+          path: candidates/{id}
+          method: put
+  delete:
+    handler: delete.main
+    events:
+      - http:
+          path: candidates/{id}
+          method: delete
