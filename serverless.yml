@@ -37,6 +37,18 @@ iamRoleStatements:
     Resource: "arn:aws:dynamodb:us-east-1:*:*"
 
 useDotenv: true
+cors: true
+cors:
+  origin: '*'
+  headers:
+    - Content-Type
+    - X-Amz-Date
+    - Authorization
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+  allowCredentials: false
+
 functions:
   create:
     handler: create.main
