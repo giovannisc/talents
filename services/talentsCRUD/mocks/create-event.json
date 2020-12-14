@@ -1,0 +1,8 @@
+{
+  "body": "{\"name\":\"Giovanni\",\"profession\":\"Engineer\",\"attachment\":\"curriculo.pdf\"}",
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "e1de5ca2-b705-49bd-81fe-85957afd1318"
+    }
+  }
+}
